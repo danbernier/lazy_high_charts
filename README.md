@@ -9,9 +9,11 @@ Easily displaying Highcharts graphs with gem style.
 
 ### Installing it by rubygems
 To install it, you just need to add it to your Gemfile:
+
     gem 'lazy_high_charts'
 
 And then run this to install the javascript files:
+
     rails g lazy_high_charts:install
 
 ### Installing it as a plugin for rails 2.3.5 and rails 3
@@ -21,37 +23,45 @@ And then run this to install the javascript files:
     rails plugin install git://github.com/michelson/lazy_high_charts.git  ##(for rails 3)
 
 ### HighStocks
-    LazyHighCharts now compatible with beta HighStock, http://www.highcharts.com/stock/demo/
 
-Usage
+LazyHighCharts now compatible with beta HighStock, http://www.highcharts.com/stock/demo/
 
- About javascript Assets notes:
- for Rails 2.x/3.x
- 1.you need manually put jquery/highcharts js to public/javascript
- 2.modify your layout html
+### Usage
+
+About javascript Assets notes:
+
+#### For Rails 2.x/3.x
+
+# you need manually put jquery/highcharts js to public/javascript
+# modify your layout html
  Sample Code:
- <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"  %>
- <%= javascript_include_tag :high_charts  %>
- 3. add gem name in your config/environment.rb
-	config.gem "lazy_high_charts"
- 4.done!
+ @<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>@
+ @<%= javascript_include_tag :high_charts %>@
 
- For Rails 3.1
+# add gem name in your config/environment.rb:
+  @config.gem "lazy_high_charts"@
+
+# done!
+
+#### For Rails 3.1
+
 In your Gemfile, add this line:
-	gem 'lazy_high_charts', '~> 1.1.5'
-then execuate command:
-  Rails g lazy_high_charts:install
 
- Usage in Controller:
+    gem 'lazy_high_charts', '~> 1.1.5'
+
+then execuate command:
+
+    rails g lazy_high_charts:install
+
+Usage in Controller:
 
      @h = LazyHighCharts::HighChart.new('graph') do |f|
         f.options[:chart][:defaultSeriesType] = "area"
-        f.series(:name=>'John', :data=>[3, 20, 3, 5, 4, 10, 12 ,3, 5,6,7,7,80,9,9])
-        f.series(:name=>'Jane', :data=> [1, 3, 4, 3, 3, 5, 4,-46,7,8,8,9,9,0,0,9] )
+        f.series(:name=>'John', :data=>[3, 20, 3, 5, 4, 10, 12, 3, 5, 6, 7, 7, 80, 9, 9])
+        f.series(:name=>'Jane', :data=> [1, 3, 4, 3, 3, 5, 4, -46, 7, 8, 8, 9, 9, 0, 0, 9])
       end
 
-
-  Without overriding entire option , (only change a specific option index):
+Without overriding entire option, (only change a specific option index):
 
      @h = LazyHighCharts::HighChart.new('graph') do |f|
       .....
@@ -61,7 +71,7 @@ then execuate command:
           f.options[:xAxis][:categories] = ["uno" ,"dos" , "tres" , "cuatro"]
      ......
 
-  Overriding entire option:
+Overriding entire option:
 
      @h = LazyHighCharts::HighChart.new('graph') do |f|
        .....
@@ -70,15 +80,15 @@ then execuate command:
        .....
 
 
-  Usage in layout:
+Usage in layout:
 
-  <%= javascript_include_tag :high_charts %>
+    <%= javascript_include_tag :high_charts %>
 
-  Usage in view:
+Usage in view:
 
     <%= high_chart("my_id", @h) %>
 
-  Passing formatting options in the view to the helper block , because all the helper options declared in the controller are converted in strict/valid json (quoted key);  so we need to extend the json object with some js.
+Passing formatting options in the view to the helper block , because all the helper options declared in the controller are converted in strict/valid json (quoted key);  so we need to extend the json object with some js.
 
       <%= high_chart("my_id", @h) do |c| %>
          	<%= "options.tooltip.formatter = function() { return '<b>HEY!!!'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y +' units';}" %>
@@ -86,19 +96,15 @@ then execuate command:
          	<%= "options.yAxis.labels.formatter = function() { return 'hey';}" %>
        <%end %>
 
-   HighStock Support:
+### HighStock Support:
 
-     ##just call HighChart Helper this way:
+Just call HighChart Helper this way:
 
-       <%= high_stock("my_id", @h) %>
+    <%= high_stock("my_id", @h) %>
 
-  Option reference:
+Option reference: http://www.highcharts.com/ref/
 
-     http://www.highcharts.com/ref/
-
-  HighCharts License:
-
-     http://www.highcharts.com/license
+HighCharts License: http://www.highcharts.com/license
 
 ## Contributing
 
