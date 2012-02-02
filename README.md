@@ -3,7 +3,7 @@
 Easily displaying Highcharts graphs with gem style.
 [![Build Status](https://secure.travis-ci.org/michelson/lazy_high_charts.png)](http://travis-ci.org/michelson/lazy_high_charts)
 
-## Now Support Rails 2.x/3.x,Happy useful
+## Now Support Rails 2.x/3.x, Happy useful
 
 ### Installation instructions for Rails 3
 
@@ -32,16 +32,16 @@ About javascript Assets notes:
 
 #### For Rails 2.x/3.x
 
-# you need manually put jquery/highcharts js to public/javascript
-# modify your layout html
+1. you need manually put jquery/highcharts js to public/javascript
+2. modify your layout html
  Sample Code:
  @<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>@
  @<%= javascript_include_tag :high_charts %>@
 
-# add gem name in your config/environment.rb:
+3. add gem name in your config/environment.rb:
   @config.gem "lazy_high_charts"@
 
-# done!
+4. done!
 
 #### For Rails 3.1
 
