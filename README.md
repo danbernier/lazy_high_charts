@@ -33,13 +33,14 @@ About javascript Assets notes:
 #### For Rails 2.x/3.x
 
 1. you need manually put jquery/highcharts js to public/javascript
-2. modify your layout html
- Sample Code:
- @<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>@
- @<%= javascript_include_tag :high_charts %>@
+2. modify your layout html with code something like this:
+
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
+    <%= javascript_include_tag :high_charts %>
 
 3. add gem name in your config/environment.rb:
-  @config.gem "lazy_high_charts"@
+
+    config.gem "lazy_high_charts"
 
 4. done!
 
